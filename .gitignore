@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Pycharm and spark
+.idea/
+spark-warehouse
+dependencies/data
+dependencies/queries

@@ -48,7 +48,8 @@ class QueryParser:
         # We are first changing " -> ` and then we try to find certain patterns that cause queries to fail
         # and we try to fix them
         query = query.strip().replace('"', '`')
-        patterns = re.findall("(cast.*as date\)) *(-|\+)\D*([0-9]+)", query, flags=re.MULTILINE)
+        # patterns = re.findall("(cast.*as date\)) *(-|\+)\D*([0-9]+)", query, flags=re.MULTILINE)
+        patterns = re.findall("(cast *\('\S* as date\)) *(-|\+)\D*([0-9]+)", query, flags=re.MULTILINE)
         for pattern in patterns:
             first_variant = pattern[0] + ' ' + pattern[1] + ' ' + pattern[2]
             second_variant = pattern[0] + ' ' + pattern[1] + '  ' + pattern[2]

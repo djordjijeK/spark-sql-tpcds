@@ -18,7 +18,7 @@ class App:
         self.import_tables()  # finally import tables
 
     def import_tables(self):
-        shutil.rmtree('../spark-warehouse')  # drop database storage
+        shutil.rmtree('./spark-warehouse')  # drop database storage
         for table in config['tables']:
             self.create_table(table)
 
