@@ -1,4 +1,4 @@
-from boostrap.bootstraper import App
+from bootstrap.bootstraper import App
 from utility.generator import Generator
 from utility.query_analyzer import QueryAnalyzer
 

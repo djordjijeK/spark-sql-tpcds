@@ -1,7 +1,7 @@
 import subprocess
 
 SCALE = 1  # scale for data and queries
-PROJECT_PATH = subprocess.check_output('dirname $PWD', shell=True).decode("UTF-8").replace('\n', '')  # project path on the file system
+PROJECT_PATH = subprocess.check_output('pwd', shell=True).decode("UTF-8").replace('\n', '')  # project path on the file system
 
 config = dict(
 

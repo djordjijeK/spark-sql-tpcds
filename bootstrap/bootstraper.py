@@ -1,4 +1,4 @@
-from boostrap.query_parser import QueryParser
+from bootstrap.query_parser import QueryParser
 from configuration.config import config
 from pyspark.sql import SparkSession
 import shutil
