@@ -18,7 +18,7 @@ class QueryAnalyzer:
 
     def run_benchmark(self):
         results = {}
-        for i in range(0, 3):
+        for i in range(0, 99):
             results[i] = self.analyze_query(i)
             print(f"Query {i} successfully executed")
 
