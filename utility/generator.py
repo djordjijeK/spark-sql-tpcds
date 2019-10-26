@@ -1,5 +1,6 @@
-from configuration.config import config
+from configuration.config import PROJECT_PATH
 from configuration.config import SCALE
+from configuration.config import config
 import shutil
 import os
 
@@ -14,7 +15,7 @@ class Generator:
         Returns an instance of Generator class
         """
         self.tpcds_dir = config['tpcds_dir']
-        self.project_path = config['project_path']
+        self.project_path = PROJECT_PATH
 
     def generate_data(self):
         """

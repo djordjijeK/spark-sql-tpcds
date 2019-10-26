@@ -6,8 +6,8 @@ import shutil
 
 class App:
     def __init__(self):
-        self.spark = SparkSession.builder.getOrCreate()
-        self.spark.conf.set("spark.sql.crossJoin.enabled", "True")
+        self.spark = SparkSession.builder.getOrCreate()  # Get spark instance
+        self.spark.conf.set("spark.sql.crossJoin.enabled", "True")  # Enable cartesian product
         self.spark.sparkContext.setLogLevel("ERROR")
 
     def create_database(self):
@@ -33,6 +33,5 @@ class App:
             if not sqlStatement == '' and not sqlStatement == ' ':
                 self.spark.sql(sqlStatement)
 
-    def create_queries(self):
-        """ Call QueryParser in order to properly generate queries """
-        QueryParser(config['integrated_queries_file_name'])
+    def preprocess_queries(self):
+        QueryParser(config['integrated_queries_file_name']) # Call QueryParser in order to properly generate queries

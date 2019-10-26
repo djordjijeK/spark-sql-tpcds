@@ -1,12 +1,9 @@
 import subprocess
 
-SCALE = 1   # specified scale of data and queries
-queries_path = '../dependencies/queries'  # path to the generated integrated queries
+SCALE = 1  # scale for data and queries
+PROJECT_PATH = subprocess.check_output('dirname $PWD', shell=True).decode("UTF-8").replace('\n', '')  # project path on the file system
 
 config = dict(
-
-    # determine project directory
-    project_path=subprocess.check_output('dirname $PWD', shell=True).decode("UTF-8").replace('\n', ''),
 
     # path to the tpcds tool that generates data and queries
     tpcds_dir="/home/georggie/Downloads/tpcds-kit",
@@ -14,10 +11,13 @@ config = dict(
     # database name
     dbname=f'spark_tpcds_scale_{SCALE}',
 
-    data_path='./dependencies/data',
+    # path to the generated data
+    data_path=f'{PROJECT_PATH}/dependencies/data',
 
-    tables_path='./dependencies/ddl/individual',
+    # path to the ddl for tables
+    tables_path=f'{PROJECT_PATH}/dependencies/ddl/individual',
 
+    # all db tables
     tables=[
         "call_center",
         "catalog_sales",
@@ -45,9 +45,11 @@ config = dict(
         "web_site"
     ],
 
-    queries_path=queries_path,
+    # path to the integrated queries
+    queries_path=f'{PROJECT_PATH}/dependencies/queries',
 
     integrated_queries_file_name='query_0.sql',
 
-    individual_queries_path=f"{queries_path}/individual"
+    # path to the individual queries
+    individual_queries_path=f'{PROJECT_PATH}/dependencies/queries/individual'
 )

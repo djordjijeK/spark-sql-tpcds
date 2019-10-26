@@ -1,4 +1,5 @@
 from configuration.config import config
+from configuration.config import PROJECT_PATH
 import time
 
 
@@ -11,17 +12,19 @@ class QueryAnalyzer:
         """
         self.spark_instance = spark_instance
         [
-            self.spark_instance.read.parquet(f"../spark-warehouse/{config['dbname']}.db/{table}/").createTempView(table)
+            self.spark_instance.read.parquet(f"{PROJECT_PATH}/spark-warehouse/{config['dbname']}.db/{table}/").createTempView(table)
             for table in config['tables']
         ]
 
     def run_benchmark(self):
         results = {}
-        for i in range(90, 99):
+        for i in range(0, 3):
             results[i] = self.analyze_query(i)
-            print(f"Done {i}")
+            print(f"Query {i} successfully executed")
 
-        return results
+        file = open(f"{config['queries_path']}/results.txt", 'w')
+        file.write(str(results))
+        file.close()
 
     def analyze_query(self, query_number):
         try:
